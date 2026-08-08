@@ -1,6 +1,7 @@
-import { ArrowForwardIcon, EmailIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, Heading as ChakraHeading, Text } from '@chakra-ui/react';
 
+import resume from '../assets/pdf/Neil-Edward-Dela-Cruz-Resume.pdf';
 import { Github, LinkedIn } from '../utils/SVGIcons';
 
 import Account from './Account';
@@ -63,7 +64,8 @@ const Heading = () => (
             </Button>
             <Button
                 as="a"
-                href="#contact"
+                href={resume}
+                download="Neil-Edward-Dela-Cruz-Resume.pdf"
                 size="lg"
                 minH="52px"
                 px={7}
@@ -72,10 +74,10 @@ const Heading = () => (
                 border="1px solid"
                 borderColor="whiteAlpha.200"
                 borderRadius="full"
-                rightIcon={<EmailIcon />}
+                rightIcon={<DownloadIcon />}
                 _hover={{ bg: 'whiteAlpha.100', transform: 'translateY(-2px)' }}
             >
-                Contact me
+                Download résumé
             </Button>
         </Flex>
 
