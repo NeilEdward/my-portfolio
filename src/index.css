@@ -1,17 +1,22 @@
-body {
-  margin: 0;
-  padding: 0;
+* {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  transition: all 0.4s ease-in-out !important;
 }
 
 html {
-  scroll-behavior: smooth !important;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+  scroll-behavior: smooth;
+  background: #050816;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #050816;
+}
+
+a {
+  color: inherit;
 }
 
 .progress-bar {
@@ -19,7 +24,43 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: #00b5d8;
+  height: 2px;
+  background: linear-gradient(90deg, #67e8f9, #a78bfa);
   transform-origin: 0%;
+}
+
+.ambient-orb {
+  position: fixed;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 999px;
+  filter: blur(120px);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.ambient-orb--cyan {
+  top: -14rem;
+  right: -10rem;
+  background: #22d3ee;
+}
+
+.ambient-orb--violet {
+  bottom: -18rem;
+  left: -12rem;
+  background: #8b5cf6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

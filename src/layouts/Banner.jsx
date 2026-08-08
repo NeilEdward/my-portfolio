@@ -1,53 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import Section from "../components/Section";
 import Avatar from "../components/Avatar";
 import Heading from "../components/Heading";
 
-const Banner = () => {
-  const { colorMode } = useColorMode();
-  const [animate, setAnimation] = useState("");
-  const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    setInterval(() => {
-      setAnimation("flip-left");
-      setLoading(false);
-    }, 500);
-  }, []);
-
-  return (
-    <Box
-      id="profile"
-      width="100%"
-      mx="auto"
-      borderRadius={{
-        base: "0% 54% 50% 50% / 10% 0% 16% 16% ",
-        md: "0% 54% 33% 67% / 10% 0% 16% 29% ",
-        lg: "0% 43% 34% 72% / 47% 0% 88% 30%   ",
-      }}
-      bgColor={colorMode === "dark" ? "#1a202c" : "blue.100"}
+const Banner = () => (
+  <Section id="profile">
+    <Grid
+      minH={{ base: "auto", lg: "calc(100vh - 120px)" }}
+      templateColumns={{ base: "1fr", lg: "minmax(0, 1.25fr) minmax(320px, 0.75fr)" }}
+      gap={{ base: 12, lg: 16 }}
+      alignItems="center"
     >
-      <Box
-        height={{ base: "90vh", md: "85vh" }}
-        px={6}
-        maxW="5xl"
-        mx="auto"
-        display="flex"
-        flexDirection={{ base: "column", md: "row-reverse" }}
-        justifyContent={{ base: "center", md: "space-between" }}
-        alignItems={{ md: "center" }}
-        gap={12}
-      >
-        {!isLoading && (
-          <>
-            <div data-aos={animate}>
-              <Avatar />
-            </div>
-            <Heading />
-          </>
-        )}
-      </Box>
-    </Box>
-  );
-};
+      <GridItem>
+        <Heading />
+      </GridItem>
+      <GridItem>
+        <Avatar />
+      </GridItem>
+    </Grid>
+  </Section>
+);
 
 export default Banner;

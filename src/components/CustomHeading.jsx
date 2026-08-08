@@ -1,18 +1,35 @@
-import { Heading, useColorMode } from "@chakra-ui/react";
-import React from "react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
-const CustomHeading = ({ heading, color = "blacAlpha.800" }) => {
-  const { colorMode } = useColorMode();
+const CustomHeading = ({ eyebrow, heading, description }) => {
   return (
-    <Heading
-      as="h2"
-      size="xl"
-      mb={2}
-      fontWeight="semibold"
-      color={colorMode === "dark" ? "gray.300" : color}
-    >
-      {heading}
-    </Heading>
+    <Box mb={{ base: 8, md: 12 }} maxW="2xl">
+      {eyebrow && (
+        <Text
+          mb={3}
+          color="cyan.200"
+          fontSize="sm"
+          fontWeight="semibold"
+          letterSpacing="0.16em"
+          textTransform="uppercase"
+        >
+          {eyebrow}
+        </Text>
+      )}
+      <Heading
+        as="h2"
+        fontSize={{ base: "3xl", md: "5xl" }}
+        lineHeight="1.05"
+        letterSpacing="-0.04em"
+        color="white"
+      >
+        {heading}
+      </Heading>
+      {description && (
+        <Text mt={4} color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }}>
+          {description}
+        </Text>
+      )}
+    </Box>
   );
 };
 

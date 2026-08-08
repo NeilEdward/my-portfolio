@@ -1,27 +1,25 @@
-import React from "react";
-import { IconButton, Tooltip, useColorMode } from "@chakra-ui/react";
+import { IconButton, Tooltip } from "@chakra-ui/react";
 
-const Account = ({ label, link, size = "lg", children }) => {
-  const { colorMode } = useColorMode();
-  return (
-    <Tooltip label={label ?? ""} fontSize="sm">
-      <IconButton
-        as="a"
-        href={link}
-        target="_blank"
-        icon={children}
-        size={size}
-        variant="solid"
-        borderRadius="full"
-        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
-        bgColor={colorMode === "dark" ? "gray.500" : "gray.300"}
-        _hover={{ bgColor: "blue.400", transform: "scale(1.1)" }}
-        _active={{ bgColor: "blue.400" }}
-        transition="all 0.2s ease-in-out"
-        cursor="pointer"
-      />
-    </Tooltip>
-  );
-};
+const Account = ({ label, link, size = "md", children }) => (
+  <Tooltip label={label} fontSize="sm">
+    <IconButton
+      as="a"
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      icon={children}
+      size={size}
+      color="whiteAlpha.800"
+      bg="whiteAlpha.50"
+      border="1px solid"
+      borderColor="whiteAlpha.200"
+      borderRadius="full"
+      transition="background 0.2s ease, transform 0.2s ease"
+      _hover={{ bg: "whiteAlpha.200", transform: "translateY(-2px)" }}
+      _focusVisible={{ boxShadow: "0 0 0 3px rgba(103, 232, 249, 0.45)" }}
+    />
+  </Tooltip>
+);
 
 export default Account;

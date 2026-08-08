@@ -1,93 +1,53 @@
 import React from "react";
 import {
   Box,
-  IconButton,
-  useColorMode,
   Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
   DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { DarkModeIcon, LightModeIcon, HamburgerIcon } from "../utils/SVGIcons";
+import { HamburgerIcon } from "../utils/SVGIcons";
 import { CustomNavLink } from "./CustomLink";
 
 const MobileNav = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const triggerRef = React.useRef();
 
   return (
-    <Box zIndex={2000000}>
+    <Box>
       <IconButton
-        icon={
-          colorMode === "light" ? (
-            <DarkModeIcon boxSize={6} />
-          ) : (
-            <LightModeIcon boxSize={6} />
-          )
-        }
+        ref={triggerRef}
+        icon={<HamburgerIcon boxSize={5} />}
+        aria-label="Open navigation"
         variant="ghost"
-        onClick={toggleColorMode}
+        color="white"
+        borderRadius="full"
+        onClick={onOpen}
       />
-      <IconButton
-        icon={<HamburgerIcon boxSize={6} />}
-        variant="ghost"
-        onClick={isOpen ? onClose : onOpen}
-      />
-
       <Drawer
-        zIndex={2000000}
         isOpen={isOpen}
         placement="right"
         onClose={onClose}
-        finalFocusRef={btnRef}
+        finalFocusRef={triggerRef}
         size="full"
       >
         <DrawerOverlay />
-        <DrawerContent bgColor={colorMode === "light" && "blue.100"}>
+        <DrawerContent bg="rgba(5, 8, 22, 0.96)" backdropFilter="blur(24px)">
           <DrawerBody
             display="flex"
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            gap={10}
+            gap={5}
             fontSize="xl"
-            fontWeight="semibold"
-            width="100%"
           >
-            <CustomNavLink
-              link="Profile"
-              path="#profile"
-              py={2}
-              onClick={onClose}
-            />
-            <CustomNavLink
-              link="About"
-              path="#about"
-              py={2}
-              onClick={onClose}
-            />
-            <CustomNavLink
-              link="Skills"
-              path="#skills"
-              py={2}
-              onClick={onClose}
-            />
-            <CustomNavLink
-              link="Projects"
-              path="#projects"
-              py={2}
-              onClick={onClose}
-            />
-            <CustomNavLink
-              link="Contact"
-              path="#contact"
-              py={2}
-              onClick={onClose}
-            />
+            <CustomNavLink link="Home" path="#profile" py={3} onClick={onClose} />
+            <CustomNavLink link="Experience" path="#experience" py={3} onClick={onClose} />
+            <CustomNavLink link="Skills" path="#skills" py={3} onClick={onClose} />
+            <CustomNavLink link="About" path="#about" py={3} onClick={onClose} />
+            <CustomNavLink link="Contact" path="#contact" py={3} onClick={onClose} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
