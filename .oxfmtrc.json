@@ -1,0 +1,14 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "printWidth": 180,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "sortPackageJson": false,
+    "ignorePatterns": ["**/*.html", "**/*.css", "node_modules", "dist"],
+    "sortImports": {
+        "customGroups": [{ "groupName": "react-libs", "elementNamePattern": ["react", "react-**"] }],
+        "groups": ["builtin", "react-libs", "external", "side_effect", "parent", ["sibling", "index"], ["style", "side_effect_style"], "unknown"]
+    }
+}
