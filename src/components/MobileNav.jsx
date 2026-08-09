@@ -26,10 +26,18 @@ const MobileNav = () => {
 
     return (
         <Box>
-            <IconButton ref={triggerRef} icon={<HamburgerIcon boxSize={5} />} aria-label="Open navigation" variant="ghost" color="white" borderRadius="full" onClick={onOpen} />
+            <IconButton
+                ref={triggerRef}
+                icon={<HamburgerIcon boxSize={5} />}
+                aria-label="Open navigation"
+                variant="ghost"
+                color="var(--portfolio-heading)"
+                borderRadius="full"
+                onClick={onOpen}
+            />
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={triggerRef} size="full">
                 <DrawerOverlay />
-                <DrawerContent bg="rgba(5, 8, 22, 0.96)" backdropFilter="blur(24px)">
+                <DrawerContent bg="var(--portfolio-drawer)" backdropFilter="blur(24px)">
                     <DrawerBody display="flex" flexDirection="column" alignItems="center" justifyContent="center" gap={5} fontSize="xl">
                         <CustomNavLink link="Home" path="#profile" py={3} onClick={handleNavigate('#profile')} />
                         <CustomNavLink link="Experience" path="#experience" py={3} onClick={handleNavigate('#experience')} />

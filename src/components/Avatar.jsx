@@ -9,10 +9,10 @@ const Avatar = () => (
             position="relative"
             p={3}
             border="1px solid"
-            borderColor="whiteAlpha.200"
+            borderColor="var(--portfolio-border)"
             borderRadius="32px"
-            bg="rgba(255, 255, 255, 0.06)"
-            boxShadow="0 28px 80px rgba(0, 0, 0, 0.36)"
+            bg="var(--portfolio-surface-strong)"
+            boxShadow="var(--portfolio-shadow)"
             backdropFilter="blur(18px)"
             transform={{ lg: 'rotate(2deg)' }}
         >
@@ -27,18 +27,18 @@ const Avatar = () => (
             align="center"
             gap={3}
             border="1px solid"
-            borderColor="whiteAlpha.200"
+            borderColor="var(--portfolio-border)"
             borderRadius="20px"
-            bg="rgba(9, 14, 35, 0.84)"
-            boxShadow="0 18px 50px rgba(0, 0, 0, 0.35)"
+            bg="var(--portfolio-surface-strong)"
+            boxShadow="var(--portfolio-shadow)"
             backdropFilter="blur(18px)"
         >
             <Box boxSize="10px" borderRadius="full" bg="purple.300" boxShadow="0 0 18px #c4b5fd" />
             <Box>
-                <Text color="white" fontSize="sm" fontWeight="semibold">
+                <Text color="var(--portfolio-heading)" fontSize="sm" fontWeight="semibold">
                     Full-stack product engineering
                 </Text>
-                <Text color="whiteAlpha.600" fontSize="xs">
+                <Text color="var(--portfolio-muted)" fontSize="xs">
                     Industry experience since 2023
                 </Text>
             </Box>

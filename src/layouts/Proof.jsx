@@ -12,9 +12,9 @@ const Proof = () => (
         <SimpleGrid
             columns={{ base: 2, lg: 4 }}
             border="1px solid"
-            borderColor="whiteAlpha.200"
+            borderColor="var(--portfolio-border)"
             borderRadius={{ base: '24px', md: '28px' }}
-            bg="rgba(255, 255, 255, 0.045)"
+            bg="var(--portfolio-surface)"
             overflow="hidden"
             backdropFilter="blur(18px)"
         >
@@ -25,12 +25,12 @@ const Proof = () => (
                     py={{ base: 5, md: 6 }}
                     borderRight={{ base: index % 2 === 0 ? '1px solid' : 'none', lg: index < proofPoints.length - 1 ? '1px solid' : 'none' }}
                     borderBottom={{ base: index < 2 ? '1px solid' : 'none', lg: 'none' }}
-                    borderColor="whiteAlpha.100"
+                    borderColor="var(--portfolio-border-soft)"
                 >
-                    <Text color="white" fontFamily="heading" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
+                    <Text color="var(--portfolio-heading)" fontFamily="heading" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
                         {point.value}
                     </Text>
-                    <Text mt={1} color="whiteAlpha.500" fontSize="xs">
+                    <Text mt={1} color="var(--portfolio-soft)" fontSize="xs">
                         {point.label}
                     </Text>
                 </Box>

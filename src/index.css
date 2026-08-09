@@ -4,7 +4,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: #050816;
+  background: var(--portfolio-bg);
 }
 
 body {
@@ -12,7 +12,7 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #050816;
+  background: var(--portfolio-bg);
 }
 
 a {

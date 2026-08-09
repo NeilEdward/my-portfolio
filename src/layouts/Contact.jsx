@@ -5,12 +5,12 @@ import Section from '../components/Section';
 import useInput from '../hooks/useInput';
 
 const fieldStyles = {
-    color: 'white',
-    bg: 'blackAlpha.300',
-    borderColor: 'whiteAlpha.200',
+    color: 'var(--portfolio-heading)',
+    bg: 'var(--portfolio-field-bg)',
+    borderColor: 'var(--portfolio-border)',
     borderRadius: '14px',
-    _placeholder: { color: 'whiteAlpha.400' },
-    _hover: { borderColor: 'whiteAlpha.300' },
+    _placeholder: { color: 'var(--portfolio-faint)' },
+    _hover: { borderColor: 'var(--portfolio-border-strong)' },
     _focusVisible: { borderColor: 'cyan.300', boxShadow: '0 0 0 1px #67e8f9' },
 };
 
@@ -25,20 +25,20 @@ const Contact = () => {
                 gap={{ base: 10, lg: 16 }}
                 p={{ base: 6, md: 10, lg: 12 }}
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="var(--portfolio-border)"
                 borderRadius={{ base: '28px', md: '36px' }}
-                bg="rgba(255, 255, 255, 0.055)"
-                boxShadow="0 32px 100px rgba(0, 0, 0, 0.28)"
+                bg="var(--portfolio-surface-strong)"
+                boxShadow="var(--portfolio-shadow)"
                 backdropFilter="blur(22px)"
             >
                 <Box>
-                    <Text color="cyan.200" fontSize="sm" fontWeight="semibold" letterSpacing="0.16em" textTransform="uppercase">
+                    <Text color="var(--portfolio-cyan-text)" fontSize="sm" fontWeight="semibold" letterSpacing="0.16em" textTransform="uppercase">
                         Contact
                     </Text>
-                    <Heading mt={4} as="h2" color="white" fontSize={{ base: '3xl', md: '5xl' }} lineHeight="1.08" letterSpacing="-0.04em">
+                    <Heading mt={4} as="h2" color="var(--portfolio-heading)" fontSize={{ base: '3xl', md: '5xl' }} lineHeight="1.08" letterSpacing="-0.04em">
                         Let&apos;s build something useful.
                     </Heading>
-                    <Text mt={5} color="whiteAlpha.600" fontSize="lg" lineHeight="1.8">
+                    <Text mt={5} color="var(--portfolio-muted)" fontSize="lg" lineHeight="1.8">
                         Have a role, product challenge, or web application in mind? Share the essentials and I&apos;ll get back to you as soon as I can.
                     </Text>
                     <Flex mt={8} direction="column" align="flex-start" gap={4}>
@@ -47,8 +47,8 @@ const Contact = () => {
                             display="inline-flex"
                             alignItems="center"
                             gap={3}
-                            color="whiteAlpha.800"
-                            _hover={{ color: 'cyan.200' }}
+                            color="var(--portfolio-text)"
+                            _hover={{ color: 'var(--portfolio-cyan-text)' }}
                         >
                             <EmailIcon />
                             <Text fontSize="sm">neiledwarddelacruz1999@gmail.com</Text>
@@ -60,8 +60,8 @@ const Contact = () => {
                             display="inline-flex"
                             alignItems="center"
                             gap={3}
-                            color="whiteAlpha.800"
-                            _hover={{ color: 'purple.200' }}
+                            color="var(--portfolio-text)"
+                            _hover={{ color: 'var(--portfolio-purple-text)' }}
                         >
                             <ExternalLinkIcon />
                             <Text fontSize="sm">Connect on LinkedIn</Text>
@@ -72,23 +72,23 @@ const Contact = () => {
                 <Box>
                     <form action="https://formsubmit.co/0b0b2cc2b07727d0fda5b0f785573caa" method="POST">
                         <FormControl isRequired>
-                            <FormLabel color="whiteAlpha.700" fontSize="sm">
+                            <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                 Name
                             </FormLabel>
                             <Input name="name" placeholder="Your name" minH="48px" {...fieldStyles} />
                         </FormControl>
                         <FormControl mt={5} isRequired>
-                            <FormLabel color="whiteAlpha.700" fontSize="sm">
+                            <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                 Email
                             </FormLabel>
                             <Input type="email" name="email" placeholder="you@example.com" minH="48px" {...fieldStyles} {...mailBind} />
                         </FormControl>
                         <SimpleGrid mt={5} columns={{ base: 1, sm: 2 }} spacing={5}>
                             <FormControl>
-                                <FormLabel color="whiteAlpha.700" fontSize="sm">
+                                <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                     Project type
                                 </FormLabel>
-                                <Select name="projectType" placeholder="Select a project" minH="48px" {...fieldStyles} sx={{ '> option': { bg: '#0b1020' } }}>
+                                <Select name="projectType" placeholder="Select a project" minH="48px" {...fieldStyles} sx={{ '> option': { bg: 'var(--portfolio-bg)' } }}>
                                     <option value="Web application">Web application</option>
                                     <option value="Internal tool or dashboard">Internal tool or dashboard</option>
                                     <option value="Frontend improvement">Frontend improvement</option>
@@ -97,10 +97,10 @@ const Contact = () => {
                                 </Select>
                             </FormControl>
                             <FormControl>
-                                <FormLabel color="whiteAlpha.700" fontSize="sm">
+                                <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                     Expected timeline
                                 </FormLabel>
-                                <Select name="timeline" placeholder="Select a timeline" minH="48px" {...fieldStyles} sx={{ '> option': { bg: '#0b1020' } }}>
+                                <Select name="timeline" placeholder="Select a timeline" minH="48px" {...fieldStyles} sx={{ '> option': { bg: 'var(--portfolio-bg)' } }}>
                                     <option value="Within 1–2 months">Within 1–2 months</option>
                                     <option value="Within 3–6 months">Within 3–6 months</option>
                                     <option value="Flexible">Flexible</option>
@@ -109,7 +109,7 @@ const Contact = () => {
                             </FormControl>
                         </SimpleGrid>
                         <FormControl mt={5} isRequired>
-                            <FormLabel color="whiteAlpha.700" fontSize="sm">
+                            <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                 Message
                             </FormLabel>
                             <Textarea

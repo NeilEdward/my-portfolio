@@ -39,23 +39,23 @@ const Skills = () => (
                     minH="100%"
                     p={{ base: 6, md: 7 }}
                     border="1px solid"
-                    borderColor="whiteAlpha.200"
+                    borderColor="var(--portfolio-border)"
                     borderRadius="26px"
-                    bg="rgba(255, 255, 255, 0.045)"
+                    bg="var(--portfolio-surface)"
                     backdropFilter="blur(18px)"
                     transition="border-color 0.2s ease, transform 0.2s ease"
                     _hover={{ borderColor: group.accent, transform: 'translateY(-4px)' }}
                 >
                     <Box boxSize="10px" mb={6} borderRadius="full" bg={group.accent} boxShadow={`0 0 20px var(--chakra-colors-${group.accent.replace('.', '-')})`} />
-                    <Heading as="h3" color="white" fontSize="xl">
+                    <Heading as="h3" color="var(--portfolio-heading)" fontSize="xl">
                         {group.title}
                     </Heading>
-                    <Text mt={3} color="whiteAlpha.600" fontSize="sm" lineHeight="1.7">
+                    <Text mt={3} color="var(--portfolio-muted)" fontSize="sm" lineHeight="1.7">
                         {group.description}
                     </Text>
                     <Grid mt={7} gap={2}>
                         {group.skills.map((skill) => (
-                            <Text key={skill} py={2.5} color="whiteAlpha.800" fontSize="sm" borderBottom="1px solid" borderColor="whiteAlpha.100">
+                            <Text key={skill} py={2.5} color="var(--portfolio-text)" fontSize="sm" borderBottom="1px solid" borderColor="var(--portfolio-border-soft)">
                                 {skill}
                             </Text>
                         ))}

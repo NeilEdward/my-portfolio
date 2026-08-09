@@ -13,7 +13,7 @@ import Skills from './layouts/Skills';
 
 function App() {
     return (
-        <Box minH="100vh" position="relative" overflowX="clip" bg="#050816">
+        <Box minH="100vh" position="relative" overflowX="clip" bg="var(--portfolio-bg)" transition="background 0.2s ease">
             <Link
                 href="#main-content"
                 position="fixed"

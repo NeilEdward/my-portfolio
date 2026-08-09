@@ -49,41 +49,41 @@ const Experience = () => (
                     gap={{ base: 6, md: 10 }}
                     p={{ base: 6, md: 9 }}
                     border="1px solid"
-                    borderColor={role.current ? 'cyan.300' : 'whiteAlpha.200'}
+                    borderColor={role.current ? 'cyan.300' : 'var(--portfolio-border)'}
                     borderRadius={{ base: '24px', md: '30px' }}
-                    bg={role.current ? 'rgba(34, 211, 238, 0.07)' : 'rgba(255, 255, 255, 0.045)'}
+                    bg={role.current ? 'rgba(34, 211, 238, 0.1)' : 'var(--portfolio-surface)'}
                     boxShadow={role.current ? '0 24px 80px rgba(34, 211, 238, 0.08)' : 'none'}
                     backdropFilter="blur(18px)"
                 >
                     <Box>
                         <Flex mb={4} align="center" gap={3}>
-                            <Text color="whiteAlpha.500" fontFamily="heading" fontSize="sm">
+                            <Text color="var(--portfolio-soft)" fontFamily="heading" fontSize="sm">
                                 0{index + 1}
                             </Text>
                             {role.current && (
-                                <Text px={3} py={1} color="cyan.100" fontSize="xs" fontWeight="semibold" borderRadius="full" bg="rgba(34, 211, 238, 0.12)">
+                                <Text px={3} py={1} color="var(--portfolio-cyan-text)" fontSize="xs" fontWeight="semibold" borderRadius="full" bg="rgba(34, 211, 238, 0.12)">
                                     Current role
                                 </Text>
                             )}
                         </Flex>
-                        <Text color="whiteAlpha.500" fontSize="sm">
+                        <Text color="var(--portfolio-soft)" fontSize="sm">
                             {role.period}
                         </Text>
                     </Box>
 
                     <Box>
-                        <Heading as="h3" color="white" fontSize={{ base: '2xl', md: '3xl' }} letterSpacing="-0.03em">
+                        <Heading as="h3" color="var(--portfolio-heading)" fontSize={{ base: '2xl', md: '3xl' }} letterSpacing="-0.03em">
                             {role.role}
                         </Heading>
-                        <Text mt={1} color={role.current ? 'cyan.200' : 'purple.200'} fontWeight="semibold">
+                        <Text mt={1} color={role.current ? 'var(--portfolio-cyan-text)' : 'var(--portfolio-purple-text)'} fontWeight="semibold">
                             {role.company}
                         </Text>
-                        <Text mt={5} maxW="3xl" color="whiteAlpha.700" lineHeight="1.8">
+                        <Text mt={5} maxW="3xl" color="var(--portfolio-muted)" lineHeight="1.8">
                             {role.summary}
                         </Text>
                         <List mt={6} spacing={3}>
                             {role.highlights.map((highlight) => (
-                                <ListItem key={highlight} display="flex" color="whiteAlpha.700" lineHeight="1.7">
+                                <ListItem key={highlight} display="flex" color="var(--portfolio-muted)" lineHeight="1.7">
                                     <ListIcon as={CheckCircleIcon} mt="6px" color={role.current ? 'cyan.300' : 'purple.300'} />
                                     {highlight}
                                 </ListItem>
@@ -95,13 +95,13 @@ const Experience = () => (
                                     key={skill}
                                     px={3}
                                     py={1.5}
-                                    color="whiteAlpha.700"
+                                    color="var(--portfolio-muted)"
                                     fontSize="xs"
                                     fontWeight="medium"
                                     border="1px solid"
-                                    borderColor="whiteAlpha.200"
+                                    borderColor="var(--portfolio-border)"
                                     borderRadius="full"
-                                    bg="blackAlpha.200"
+                                    bg="var(--portfolio-chip)"
                                 >
                                     {skill}
                                 </Text>

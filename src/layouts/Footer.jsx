@@ -16,15 +16,15 @@ const Footer = () => (
         justify="space-between"
         gap={4}
         borderTop="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="var(--portfolio-border-soft)"
     >
         <Flex align="center" gap={3}>
             <Image src={logo} alt="" boxSize="32px" />
-            <Text color="whiteAlpha.700" fontSize="sm">
+            <Text color="var(--portfolio-muted)" fontSize="sm">
                 Neil Edward Dela Cruz
             </Text>
         </Flex>
-        <Text color="whiteAlpha.400" fontSize="sm">
+        <Text color="var(--portfolio-faint)" fontSize="sm">
             © {new Date().getFullYear()} · Built with React
         </Text>
     </Flex>

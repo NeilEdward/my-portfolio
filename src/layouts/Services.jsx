@@ -40,7 +40,7 @@ const Services = () => (
             />
             <Flex flexShrink={0} px={4} py={2.5} align="center" gap={2} border="1px solid" borderColor="cyan.300" borderRadius="full" bg="rgba(34, 211, 238, 0.07)">
                 <Box boxSize="7px" borderRadius="full" bg="cyan.300" boxShadow="0 0 16px #67e8f9" />
-                <Text color="cyan.100" fontSize="sm" fontWeight="medium">
+                <Text color="var(--portfolio-cyan-text)" fontSize="sm" fontWeight="medium">
                     Available for selected freelance work · GMT+8
                 </Text>
             </Flex>
@@ -52,31 +52,31 @@ const Services = () => (
                     key={service.title}
                     p={{ base: 6, md: 7 }}
                     border="1px solid"
-                    borderColor="whiteAlpha.200"
+                    borderColor="var(--portfolio-border)"
                     borderRadius="26px"
-                    bg="rgba(255, 255, 255, 0.045)"
+                    bg="var(--portfolio-surface)"
                     backdropFilter="blur(18px)"
                 >
-                    <Text color="cyan.200" fontFamily="heading" fontSize="sm">
+                    <Text color="var(--portfolio-cyan-text)" fontFamily="heading" fontSize="sm">
                         {service.number}
                     </Text>
-                    <Heading mt={6} as="h3" color="white" fontSize="xl" lineHeight="1.3">
+                    <Heading mt={6} as="h3" color="var(--portfolio-heading)" fontSize="xl" lineHeight="1.3">
                         {service.title}
                     </Heading>
-                    <Text mt={4} color="whiteAlpha.600" fontSize="sm" lineHeight="1.8">
+                    <Text mt={4} color="var(--portfolio-muted)" fontSize="sm" lineHeight="1.8">
                         {service.description}
                     </Text>
                 </Box>
             ))}
         </SimpleGrid>
 
-        <Box mt={{ base: 8, md: 12 }} p={{ base: 6, md: 9 }} border="1px solid" borderColor="whiteAlpha.200" borderRadius="30px" bg="rgba(139, 92, 246, 0.055)">
+        <Box mt={{ base: 8, md: 12 }} p={{ base: 6, md: 9 }} border="1px solid" borderColor="var(--portfolio-border)" borderRadius="30px" bg="rgba(139, 92, 246, 0.07)">
             <Flex direction={{ base: 'column', md: 'row' }} align={{ md: 'center' }} justify="space-between" gap={5}>
                 <Box>
-                    <Text color="purple.200" fontSize="sm" fontWeight="semibold" letterSpacing="0.14em" textTransform="uppercase">
+                    <Text color="var(--portfolio-purple-text)" fontSize="sm" fontWeight="semibold" letterSpacing="0.14em" textTransform="uppercase">
                         How I work
                     </Text>
-                    <Heading mt={3} as="h3" color="white" fontSize={{ base: '2xl', md: '3xl' }} letterSpacing="-0.03em">
+                    <Heading mt={3} as="h3" color="var(--portfolio-heading)" fontSize={{ base: '2xl', md: '3xl' }} letterSpacing="-0.03em">
                         Clear from problem to delivery.
                     </Heading>
                 </Box>
@@ -86,25 +86,25 @@ const Services = () => (
                     variant="outline"
                     minH="48px"
                     px={6}
-                    color="white"
-                    borderColor="whiteAlpha.300"
+                    color="var(--portfolio-heading)"
+                    borderColor="var(--portfolio-border-strong)"
                     borderRadius="full"
                     rightIcon={<ArrowForwardIcon />}
-                    _hover={{ bg: 'whiteAlpha.100', borderColor: 'cyan.200' }}
+                    _hover={{ bg: 'var(--portfolio-hover)', borderColor: 'cyan.200' }}
                 >
                     Discuss a project
                 </Button>
             </Flex>
             <Grid mt={8} templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={4}>
                 {process.map(([title, description], index) => (
-                    <Box key={title} pt={5} borderTop="1px solid" borderColor="whiteAlpha.200">
-                        <Text color="whiteAlpha.400" fontFamily="heading" fontSize="xs">
+                    <Box key={title} pt={5} borderTop="1px solid" borderColor="var(--portfolio-border)">
+                        <Text color="var(--portfolio-faint)" fontFamily="heading" fontSize="xs">
                             0{index + 1}
                         </Text>
-                        <Text mt={3} color="white" fontWeight="semibold">
+                        <Text mt={3} color="var(--portfolio-heading)" fontWeight="semibold">
                             {title}
                         </Text>
-                        <Text mt={2} color="whiteAlpha.500" fontSize="sm" lineHeight="1.7">
+                        <Text mt={2} color="var(--portfolio-soft)" fontSize="sm" lineHeight="1.7">
                             {description}
                         </Text>
                     </Box>

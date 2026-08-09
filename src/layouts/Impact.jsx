@@ -46,16 +46,16 @@ const Impact = () => (
         <Stack spacing={6}>
             {impactStories.map((story, index) => {
                 const accentColor = story.accent === 'cyan' ? 'cyan.300' : 'purple.300';
-                const accentText = story.accent === 'cyan' ? 'cyan.200' : 'purple.200';
+                const accentText = story.accent === 'cyan' ? 'var(--portfolio-cyan-text)' : 'var(--portfolio-purple-text)';
 
                 return (
                     <Grid
                         key={story.title}
                         templateColumns={{ base: '1fr', lg: 'minmax(0, 0.78fr) minmax(0, 1.22fr)' }}
                         border="1px solid"
-                        borderColor="whiteAlpha.200"
+                        borderColor="var(--portfolio-border)"
                         borderRadius={{ base: '26px', md: '32px' }}
-                        bg="rgba(255, 255, 255, 0.045)"
+                        bg="var(--portfolio-surface)"
                         overflow="hidden"
                         backdropFilter="blur(18px)"
                     >
@@ -63,21 +63,21 @@ const Impact = () => (
                             p={{ base: 6, md: 9 }}
                             borderRight={{ lg: '1px solid' }}
                             borderBottom={{ base: '1px solid', lg: 'none' }}
-                            borderColor="whiteAlpha.100"
-                            bg={story.accent === 'cyan' ? 'rgba(34, 211, 238, 0.055)' : 'rgba(139, 92, 246, 0.065)'}
+                            borderColor="var(--portfolio-border-soft)"
+                            bg={story.accent === 'cyan' ? 'rgba(34, 211, 238, 0.08)' : 'rgba(139, 92, 246, 0.08)'}
                         >
                             <Flex align="center" gap={3}>
-                                <Text color="whiteAlpha.400" fontFamily="heading" fontSize="sm">
+                                <Text color="var(--portfolio-faint)" fontFamily="heading" fontSize="sm">
                                     0{index + 1}
                                 </Text>
                                 <Text color={accentText} fontSize="xs" fontWeight="semibold" letterSpacing="0.1em" textTransform="uppercase">
                                     {story.context}
                                 </Text>
                             </Flex>
-                            <Heading mt={7} as="h3" color="white" fontSize={{ base: '2xl', md: '3xl' }} lineHeight="1.2" letterSpacing="-0.035em">
+                            <Heading mt={7} as="h3" color="var(--portfolio-heading)" fontSize={{ base: '2xl', md: '3xl' }} lineHeight="1.2" letterSpacing="-0.035em">
                                 {story.title}
                             </Heading>
-                            <Text mt={4} color="whiteAlpha.700" lineHeight="1.8">
+                            <Text mt={4} color="var(--portfolio-muted)" lineHeight="1.8">
                                 {story.description}
                             </Text>
                             <Flex mt={7} wrap="wrap" gap={2}>
@@ -86,12 +86,12 @@ const Impact = () => (
                                         key={technology}
                                         px={3}
                                         py={1.5}
-                                        color="whiteAlpha.700"
+                                        color="var(--portfolio-muted)"
                                         fontSize="xs"
                                         border="1px solid"
-                                        borderColor="whiteAlpha.200"
+                                        borderColor="var(--portfolio-border)"
                                         borderRadius="full"
-                                        bg="blackAlpha.200"
+                                        bg="var(--portfolio-chip)"
                                     >
                                         {technology}
                                     </Text>
@@ -100,30 +100,30 @@ const Impact = () => (
                         </GridItem>
 
                         <GridItem p={{ base: 6, md: 9 }}>
-                            <Text color="whiteAlpha.400" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                            <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
                                 The problem
                             </Text>
-                            <Text mt={3} color="whiteAlpha.800" fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.7">
+                            <Text mt={3} color="var(--portfolio-text)" fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.7">
                                 {story.problem}
                             </Text>
 
-                            <Text mt={7} color="whiteAlpha.400" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                            <Text mt={7} color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
                                 My contribution
                             </Text>
                             <List mt={4} spacing={3}>
                                 {story.contributions.map((contribution) => (
-                                    <ListItem key={contribution} display="flex" color="whiteAlpha.700" lineHeight="1.7">
+                                    <ListItem key={contribution} display="flex" color="var(--portfolio-muted)" lineHeight="1.7">
                                         <ListIcon as={CheckCircleIcon} mt="6px" color={accentColor} />
                                         {contribution}
                                     </ListItem>
                                 ))}
                             </List>
 
-                            <Box mt={7} pt={6} borderTop="1px solid" borderColor="whiteAlpha.100">
-                                <Text color="whiteAlpha.400" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                            <Box mt={7} pt={6} borderTop="1px solid" borderColor="var(--portfolio-border-soft)">
+                                <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
                                     Outcome
                                 </Text>
-                                <Text mt={3} color="whiteAlpha.800" lineHeight="1.7">
+                                <Text mt={3} color="var(--portfolio-text)" lineHeight="1.7">
                                     {story.outcome}
                                 </Text>
                             </Box>
