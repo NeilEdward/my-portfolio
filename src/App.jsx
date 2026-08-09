@@ -10,7 +10,7 @@ import Skills from './layouts/Skills';
 
 function App() {
     return (
-        <Box minH="100vh" position="relative" overflow="hidden" bg="#050816">
+        <Box minH="100vh" position="relative" overflowX="clip" bg="#050816">
             <div className="ambient-orb ambient-orb--cyan" aria-hidden="true" />
             <div className="ambient-orb ambient-orb--violet" aria-hidden="true" />
             <Header />
