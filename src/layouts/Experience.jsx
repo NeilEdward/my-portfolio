@@ -10,13 +10,13 @@ const roles = [
         role: 'Junior Software Engineer',
         period: '2025 — Present',
         current: true,
-        summary: 'Delivering product features across a large React and TypeScript application and Kotlin and Spring Boot backend services.',
+        summary: 'Delivering enterprise product features across a large React and TypeScript application and Kotlin and Spring Boot backend services.',
         highlights: [
             'Build responsive product flows using React, TypeScript, Redux Toolkit, RTK Query, and shared component systems.',
-            'Implement backend export and file-processing workflows, service contracts, persistence changes, and asynchronous processing in Kotlin.',
-            'Work with PostgreSQL, Flyway, AWS S3, and event-driven notification flows while collaborating across service boundaries.',
+            'Implement backend service logic, API contracts, persistence changes, file-processing workflows, and asynchronous processing in Kotlin.',
+            'Work with PostgreSQL, Flyway, AWS, and event-driven flows while collaborating across service boundaries.',
         ],
-        skills: ['React', 'TypeScript', 'Kotlin', 'Spring Boot', 'PostgreSQL', 'AWS'],
+        skills: ['React', 'TypeScript', 'Kotlin', 'Spring Boot', 'PostgreSQL', 'AWS', 'RTK Query'],
     },
     {
         company: 'RDF Feeds, Livestock & Foods Inc.',

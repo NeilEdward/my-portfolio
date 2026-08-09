@@ -82,7 +82,7 @@ const Heading = () => (
         </Flex>
 
         <Flex mt={8} align="center" gap={3} wrap="wrap">
-            <Account label="GitHub" link="https://github.com/neildc14">
+            <Account label="GitHub" link="https://github.com/NeilEdward">
                 <Github boxSize={5} />
             </Account>
             <Account label="LinkedIn" link="https://www.linkedin.com/in/neiledwarddelacruz">

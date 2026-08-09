@@ -1,8 +1,8 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
 
-const CustomHeading = ({ eyebrow, heading, description }) => {
+const CustomHeading = ({ eyebrow, heading, description, mb = { base: 8, md: 12 } }) => {
     return (
-        <Box mb={{ base: 8, md: 12 }} maxW="2xl">
+        <Box mb={mb} maxW="2xl">
             {eyebrow && (
                 <Text mb={3} color="cyan.200" fontSize="sm" fontWeight="semibold" letterSpacing="0.16em" textTransform="uppercase">
                     {eyebrow}

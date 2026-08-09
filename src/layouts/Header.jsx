@@ -27,7 +27,7 @@ const Header = () => {
                 </Link>
                 {isDesktop ? <DesktopNav /> : <MobileNav />}
             </Flex>
-            <motion.div className="progress-bar" style={{ scaleX: scrollYProgress }} />
+            <motion.div className="progress-bar" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
         </Box>
     );
 };

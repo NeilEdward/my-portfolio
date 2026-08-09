@@ -1,5 +1,5 @@
 import { ArrowForwardIcon, EmailIcon, ExternalLinkIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, FormControl, FormLabel, Grid, Heading, Input, Link, Text, Textarea } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Grid, Heading, Input, Link, Select, SimpleGrid, Text, Textarea } from '@chakra-ui/react';
 
 import Section from '../components/Section';
 import useInput from '../hooks/useInput';
@@ -39,7 +39,7 @@ const Contact = () => {
                         Let&apos;s build something useful.
                     </Heading>
                     <Text mt={5} color="whiteAlpha.600" fontSize="lg" lineHeight="1.8">
-                        Have a role, product challenge, or collaboration in mind? Send a message and I&apos;ll get back to you.
+                        Have a role, product challenge, or web application in mind? Share the essentials and I&apos;ll get back to you as soon as I can.
                     </Text>
                     <Flex mt={8} direction="column" align="flex-start" gap={4}>
                         <Link
@@ -83,6 +83,31 @@ const Contact = () => {
                             </FormLabel>
                             <Input type="email" name="email" placeholder="you@example.com" minH="48px" {...fieldStyles} {...mailBind} />
                         </FormControl>
+                        <SimpleGrid mt={5} columns={{ base: 1, sm: 2 }} spacing={5}>
+                            <FormControl>
+                                <FormLabel color="whiteAlpha.700" fontSize="sm">
+                                    Project type
+                                </FormLabel>
+                                <Select name="projectType" placeholder="Select a project" minH="48px" {...fieldStyles} sx={{ '> option': { bg: '#0b1020' } }}>
+                                    <option value="Web application">Web application</option>
+                                    <option value="Internal tool or dashboard">Internal tool or dashboard</option>
+                                    <option value="Frontend improvement">Frontend improvement</option>
+                                    <option value="API or backend integration">API or backend integration</option>
+                                    <option value="Other">Other</option>
+                                </Select>
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel color="whiteAlpha.700" fontSize="sm">
+                                    Expected timeline
+                                </FormLabel>
+                                <Select name="timeline" placeholder="Select a timeline" minH="48px" {...fieldStyles} sx={{ '> option': { bg: '#0b1020' } }}>
+                                    <option value="Within 1–2 months">Within 1–2 months</option>
+                                    <option value="Within 3–6 months">Within 3–6 months</option>
+                                    <option value="Flexible">Flexible</option>
+                                    <option value="Just exploring">Just exploring</option>
+                                </Select>
+                            </FormControl>
+                        </SimpleGrid>
                         <FormControl mt={5} isRequired>
                             <FormLabel color="whiteAlpha.700" fontSize="sm">
                                 Message
