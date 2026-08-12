@@ -33,6 +33,7 @@ const theme = extendTheme({
                     '--portfolio-field-bg': isDark ? 'rgba(0, 0, 0, 0.24)' : 'rgba(255, 255, 255, 0.82)',
                     '--portfolio-cyan-text': isDark ? '#a5f3fc' : '#0e7490',
                     '--portfolio-purple-text': isDark ? '#ddd6fe' : '#6d28d9',
+                    '--portfolio-hero-gradient': isDark ? 'linear-gradient(90deg, #a5f3fc, #c4b5fd)' : 'linear-gradient(90deg, #067491, #6d28d9)',
                     '--portfolio-shadow': isDark ? '0 32px 100px rgba(0, 0, 0, 0.28)' : '0 28px 80px rgba(15, 23, 42, 0.1)',
                 },
                 body: {

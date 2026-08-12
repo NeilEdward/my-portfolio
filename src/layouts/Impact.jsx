@@ -1,8 +1,19 @@
+import React from 'react';
+
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Box, Flex, Grid, GridItem, Heading, List, ListIcon, ListItem, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Grid, GridItem, Heading, List, ListIcon, ListItem, Stack, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { isValidMotionProp, motion, useReducedMotion } from 'framer-motion';
 
 import CustomHeading from '../components/CustomHeading';
 import Section from '../components/Section';
+
+const MotionArticle = chakra(motion.article, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+
+const MotionSpan = chakra(motion.span, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
 const impactStories = [
     {
@@ -35,104 +46,218 @@ const impactStories = [
     },
 ];
 
-const Impact = () => (
-    <Section id="impact">
-        <CustomHeading
-            eyebrow="Selected engineering impact"
-            heading="Work shaped around the problem, not just the stack."
-            description="A closer look at the production systems I have helped build. Details are generalized to respect product and company confidentiality."
-        />
+const Impact = () => {
+    const [activeStoryIndex, setActiveStoryIndex] = React.useState(0);
+    const storyRefs = React.useRef([]);
+    const shouldReduceMotion = useReducedMotion();
 
-        <Stack spacing={6}>
-            {impactStories.map((story, index) => {
-                const accentColor = story.accent === 'cyan' ? 'cyan.300' : 'purple.300';
-                const accentText = story.accent === 'cyan' ? 'var(--portfolio-cyan-text)' : 'var(--portfolio-purple-text)';
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntry = entries.filter((entry) => entry.isIntersecting).sort((current, next) => next.intersectionRatio - current.intersectionRatio)[0];
 
-                return (
-                    <Grid
-                        key={story.title}
-                        templateColumns={{ base: '1fr', lg: 'minmax(0, 0.78fr) minmax(0, 1.22fr)' }}
-                        border="1px solid"
-                        borderColor="var(--portfolio-border)"
-                        borderRadius={{ base: '26px', md: '32px' }}
-                        bg="var(--portfolio-surface)"
-                        overflow="hidden"
-                        backdropFilter="blur(18px)"
-                    >
-                        <GridItem
-                            p={{ base: 6, md: 9 }}
-                            borderRight={{ lg: '1px solid' }}
-                            borderBottom={{ base: '1px solid', lg: 'none' }}
-                            borderColor="var(--portfolio-border-soft)"
-                            bg={story.accent === 'cyan' ? 'rgba(34, 211, 238, 0.08)' : 'rgba(139, 92, 246, 0.08)'}
-                        >
-                            <Flex align="center" gap={3}>
-                                <Text color="var(--portfolio-faint)" fontFamily="heading" fontSize="sm">
-                                    0{index + 1}
-                                </Text>
-                                <Text color={accentText} fontSize="xs" fontWeight="semibold" letterSpacing="0.1em" textTransform="uppercase">
-                                    {story.context}
-                                </Text>
-                            </Flex>
-                            <Heading mt={7} as="h3" color="var(--portfolio-heading)" fontSize={{ base: '2xl', md: '3xl' }} lineHeight="1.2" letterSpacing="-0.035em">
-                                {story.title}
-                            </Heading>
-                            <Text mt={4} color="var(--portfolio-muted)" lineHeight="1.8">
-                                {story.description}
-                            </Text>
-                            <Flex mt={7} wrap="wrap" gap={2}>
-                                {story.stack.map((technology) => (
-                                    <Text
-                                        key={technology}
-                                        px={3}
-                                        py={1.5}
-                                        color="var(--portfolio-muted)"
-                                        fontSize="xs"
+                if (visibleEntry?.target.dataset.storyIndex) {
+                    setActiveStoryIndex(Number(visibleEntry.target.dataset.storyIndex));
+                }
+            },
+            { rootMargin: '-30% 0px -45% 0px', threshold: [0.25, 0.45, 0.7] },
+        );
+
+        storyRefs.current.forEach((storyRef) => {
+            if (storyRef) observer.observe(storyRef);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const handleStorySelect = (index) => {
+        const storyRef = storyRefs.current[index];
+
+        if (!storyRef) return;
+
+        setActiveStoryIndex(index);
+        storyRef.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth', block: 'center' });
+    };
+
+    return (
+        <Section id="impact">
+            <CustomHeading
+                eyebrow="Selected engineering impact"
+                heading="Work shaped around the problem, not just the stack."
+                description="A closer look at the production systems I have helped build. Details are generalized to respect product and company confidentiality."
+            />
+
+            <Grid templateColumns={{ base: '1fr', lg: '190px minmax(0, 1fr)' }} gap={{ base: 5, lg: 8 }} alignItems="start">
+                <Stack
+                    as="nav"
+                    aria-label="Impact story navigation"
+                    position={{ lg: 'sticky' }}
+                    top={{ lg: '104px' }}
+                    spacing={0}
+                    border="1px solid"
+                    borderColor="var(--portfolio-border)"
+                    borderRadius="24px"
+                    bg="var(--portfolio-surface)"
+                    overflow="hidden"
+                    backdropFilter="blur(18px)"
+                >
+                    {impactStories.map((story, index) => {
+                        const isActive = activeStoryIndex === index;
+                        const accentText = story.accent === 'cyan' ? 'var(--portfolio-cyan-text)' : 'var(--portfolio-purple-text)';
+
+                        return (
+                            <Button
+                                key={story.title}
+                                type="button"
+                                h="auto"
+                                minH="78px"
+                                px={4}
+                                py={4}
+                                justifyContent="flex-start"
+                                color={isActive ? 'var(--portfolio-heading)' : 'var(--portfolio-soft)'}
+                                bg={isActive ? 'var(--portfolio-hover)' : 'transparent'}
+                                borderRadius={0}
+                                borderLeft="3px solid"
+                                borderLeftColor={isActive ? accentText : 'transparent'}
+                                borderBottom={index < impactStories.length - 1 ? '1px solid' : 'none'}
+                                borderBottomColor="var(--portfolio-border-soft)"
+                                _hover={{ bg: 'var(--portfolio-hover)', color: 'var(--portfolio-heading)' }}
+                                _focusVisible={{ boxShadow: 'inset 0 0 0 3px rgba(103, 232, 249, 0.35)' }}
+                                onClick={() => handleStorySelect(index)}
+                            >
+                                <Flex width="100%" align="center" gap={3}>
+                                    <Box
+                                        position="relative"
+                                        boxSize="18px"
+                                        flexShrink={0}
                                         border="1px solid"
-                                        borderColor="var(--portfolio-border)"
+                                        borderColor={isActive ? accentText : 'var(--portfolio-border-strong)'}
                                         borderRadius="full"
-                                        bg="var(--portfolio-chip)"
                                     >
-                                        {technology}
+                                        {isActive && (
+                                            <MotionSpan
+                                                layoutId="impact-step"
+                                                position="absolute"
+                                                inset="3px"
+                                                borderRadius="full"
+                                                bg={accentText}
+                                                transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
+                                            />
+                                        )}
+                                    </Box>
+                                    <Box textAlign="left">
+                                        <Text fontFamily="heading" fontSize="xs">
+                                            0{index + 1}
+                                        </Text>
+                                        <Text mt={1} fontSize="sm" fontWeight="semibold" whiteSpace="normal" lineHeight="1.25">
+                                            {story.title}
+                                        </Text>
+                                    </Box>
+                                </Flex>
+                            </Button>
+                        );
+                    })}
+                </Stack>
+
+                <Stack spacing={6}>
+                    {impactStories.map((story, index) => {
+                        const accentColor = story.accent === 'cyan' ? 'cyan.300' : 'purple.300';
+                        const accentText = story.accent === 'cyan' ? 'var(--portfolio-cyan-text)' : 'var(--portfolio-purple-text)';
+
+                        return (
+                            <MotionArticle
+                                key={story.title}
+                                ref={(element) => {
+                                    storyRefs.current[index] = element;
+                                }}
+                                data-story-index={index}
+                                display="grid"
+                                templateColumns={{ base: '1fr', lg: 'minmax(0, 0.78fr) minmax(0, 1.22fr)' }}
+                                border="1px solid"
+                                borderColor={activeStoryIndex === index ? accentText : 'var(--portfolio-border)'}
+                                borderRadius={{ base: '26px', md: '32px' }}
+                                bg="var(--portfolio-surface)"
+                                overflow="hidden"
+                                backdropFilter="blur(18px)"
+                                animate={shouldReduceMotion ? undefined : { scale: activeStoryIndex === index ? 1 : 0.985, opacity: activeStoryIndex === index ? 1 : 0.78 }}
+                                transition={{ duration: 0.28, ease: 'easeOut' }}
+                            >
+                                <GridItem
+                                    p={{ base: 6, md: 9 }}
+                                    borderRight={{ lg: '1px solid' }}
+                                    borderBottom={{ base: '1px solid', lg: 'none' }}
+                                    borderColor="var(--portfolio-border-soft)"
+                                    bg={story.accent === 'cyan' ? 'rgba(34, 211, 238, 0.08)' : 'rgba(139, 92, 246, 0.08)'}
+                                >
+                                    <Flex align="center" gap={3}>
+                                        <Text color="var(--portfolio-faint)" fontFamily="heading" fontSize="sm">
+                                            0{index + 1}
+                                        </Text>
+                                        <Text color={accentText} fontSize="xs" fontWeight="semibold" letterSpacing="0.1em" textTransform="uppercase">
+                                            {story.context}
+                                        </Text>
+                                    </Flex>
+                                    <Heading mt={7} as="h3" color="var(--portfolio-heading)" fontSize={{ base: '2xl', md: '3xl' }} lineHeight="1.2" letterSpacing="-0.035em">
+                                        {story.title}
+                                    </Heading>
+                                    <Text mt={4} color="var(--portfolio-muted)" lineHeight="1.8">
+                                        {story.description}
                                     </Text>
-                                ))}
-                            </Flex>
-                        </GridItem>
+                                    <Flex mt={7} wrap="wrap" gap={2}>
+                                        {story.stack.map((technology) => (
+                                            <Text
+                                                key={technology}
+                                                px={3}
+                                                py={1.5}
+                                                color="var(--portfolio-muted)"
+                                                fontSize="xs"
+                                                border="1px solid"
+                                                borderColor="var(--portfolio-border)"
+                                                borderRadius="full"
+                                                bg="var(--portfolio-chip)"
+                                            >
+                                                {technology}
+                                            </Text>
+                                        ))}
+                                    </Flex>
+                                </GridItem>
 
-                        <GridItem p={{ base: 6, md: 9 }}>
-                            <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
-                                The problem
-                            </Text>
-                            <Text mt={3} color="var(--portfolio-text)" fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.7">
-                                {story.problem}
-                            </Text>
+                                <GridItem p={{ base: 6, md: 9 }}>
+                                    <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                                        The problem
+                                    </Text>
+                                    <Text mt={3} color="var(--portfolio-text)" fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.7">
+                                        {story.problem}
+                                    </Text>
 
-                            <Text mt={7} color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
-                                My contribution
-                            </Text>
-                            <List mt={4} spacing={3}>
-                                {story.contributions.map((contribution) => (
-                                    <ListItem key={contribution} display="flex" color="var(--portfolio-muted)" lineHeight="1.7">
-                                        <ListIcon as={CheckCircleIcon} mt="6px" color={accentColor} />
-                                        {contribution}
-                                    </ListItem>
-                                ))}
-                            </List>
+                                    <Text mt={7} color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                                        My contribution
+                                    </Text>
+                                    <List mt={4} spacing={3}>
+                                        {story.contributions.map((contribution) => (
+                                            <ListItem key={contribution} display="flex" color="var(--portfolio-muted)" lineHeight="1.7">
+                                                <ListIcon as={CheckCircleIcon} mt="6px" color={accentColor} />
+                                                {contribution}
+                                            </ListItem>
+                                        ))}
+                                    </List>
 
-                            <Box mt={7} pt={6} borderTop="1px solid" borderColor="var(--portfolio-border-soft)">
-                                <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
-                                    Outcome
-                                </Text>
-                                <Text mt={3} color="var(--portfolio-text)" lineHeight="1.7">
-                                    {story.outcome}
-                                </Text>
-                            </Box>
-                        </GridItem>
-                    </Grid>
-                );
-            })}
-        </Stack>
-    </Section>
-);
+                                    <Box mt={7} pt={6} borderTop="1px solid" borderColor="var(--portfolio-border-soft)">
+                                        <Text color="var(--portfolio-faint)" fontSize="xs" fontWeight="semibold" letterSpacing="0.12em" textTransform="uppercase">
+                                            Outcome
+                                        </Text>
+                                        <Text mt={3} color="var(--portfolio-text)" lineHeight="1.7">
+                                            {story.outcome}
+                                        </Text>
+                                    </Box>
+                                </GridItem>
+                            </MotionArticle>
+                        );
+                    })}
+                </Stack>
+            </Grid>
+        </Section>
+    );
+};
 
 export default Impact;

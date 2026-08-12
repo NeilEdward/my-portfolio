@@ -29,7 +29,7 @@ const Heading = () => (
 
         <ChakraHeading as="h1" color="var(--portfolio-heading)" fontSize={{ base: '4xl', sm: '5xl', md: '7xl' }} lineHeight={{ base: '1.05', md: '0.98' }} letterSpacing="-0.055em">
             I turn complex workflows into
-            <Text as="span" display="block" bgGradient="linear(to-r, cyan.200, purple.300)" bgClip="text">
+            <Text as="span" display="block" bgImage="var(--portfolio-hero-gradient)" bgClip="text">
                 reliable software.
             </Text>
         </ChakraHeading>
