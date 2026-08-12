@@ -14,6 +14,8 @@ const fieldStyles = {
     _focusVisible: { borderColor: 'cyan.300', boxShadow: '0 0 0 1px #67e8f9' },
 };
 
+const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
+
 const Contact = () => {
     const [, mailBind] = useInput();
     const [, messageBind] = useInput();
@@ -70,7 +72,11 @@ const Contact = () => {
                 </Box>
 
                 <Box>
-                    <form action="https://formsubmit.co/0b0b2cc2b07727d0fda5b0f785573caa" method="POST">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value={web3FormsAccessKey} />
+                        <input type="hidden" name="subject" value="New portfolio inquiry" />
+                        <input type="hidden" name="from_name" value="Neil Portfolio Contact" />
+                        <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
                         <FormControl isRequired>
                             <FormLabel color="var(--portfolio-muted)" fontSize="sm">
                                 Name
